@@ -1,7 +1,7 @@
 /* global describe, it */
 require('should')
 const { Writable } = require('stream')
-const Billow = require('../src')
+const Billow = require('../src/billow')
 
 describe('Billow test', function () {
   it('Should init with right members', function () {
@@ -24,7 +24,7 @@ describe('Billow test', function () {
       }
     })
 
-    billow.flows = [[writeable]]
+    billow.flows = [{ droplets: [writeable] }]
     billow.write(`${testString}${testString}`)
   })
 
