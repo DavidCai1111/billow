@@ -59,7 +59,7 @@ billow.addFlow(flowOne).addFlow(flowTwo).write('billow!\r\nbillow!\r\n')
 
 ## How it works
 
-`Billow`'s workflow is based on `Flow` which is the combination of `Droplet`. Each `Droplet` is an implementation of Node.js transform stream, in which you can use `async / await` function to handle the asynchronous data processing logic with happiness. And `Flow` is the abstact pipeline of those `Droplet`s, so the data transmission in `Flow` is very fast and heap memory saved. Because Node.js transform stream will buffer the data when there is no downstream, so all data in `Flow`s will be piped to a writable stream which name is `blackHole` eventually to prevent the potential resident memory leak.
+`Billow`'s workflow is based on `Flow` which is the combination of `Droplet`s. Each `Droplet` is an implementation of Node.js transform stream, in which you can use `async / await` function to handle the asynchronous data processing logic with happiness. And `Flow` is the abstact pipeline of those `Droplet`s, so the data transmission in `Flow` is very fast and heap memory saved. Because Node.js transform stream will buffer the data when there is no downstream, so all data in `Flow`s will be piped to a writable stream which name is `blackHole` eventually to prevent the potential resident memory leak.
 
 ```
 
