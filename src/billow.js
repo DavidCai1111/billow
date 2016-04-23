@@ -13,7 +13,10 @@ class Billow extends Writable {
   }
 
   _write (chunk, encoding, next) {
-    if (!this.separator) for (let flow of this.flows) { flow.droplets[0].write(chunk) }
+    if (!this.separator) {
+      for (let flow of this.flows) { flow.droplets[0].write(chunk) }
+      return this
+    }
     if (this._buffer) chunk = Buffer.concat([this._buffer, chunk])
 
     let start = 0

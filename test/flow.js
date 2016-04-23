@@ -10,7 +10,7 @@ describe('Flow test', function () {
   })
 
   it('Should pipe data through streams', function () {
-    let flow = new Flow()
+    let flow = new Flow({ events: 'error' })
     let count = 0
     flow.addDroplets(new Droplet({
       handler: async function (chunk) {

@@ -32,4 +32,19 @@ describe('Billow test', function () {
     let billow = new Billow();
     (function () { billow.addFlow('wrongFlow') }).should.throw(/should be an instance of Flow/)
   })
+
+  it('Should get hole data when no separator', function (done) {
+    let testString = 'test\r\n'
+    let billow = new Billow({ separator: null })
+    let writeable = new Writable({
+      write: function (chunk, encoding, next) {
+        chunk.toString().should.eql(`${testString}${testString}`)
+        next()
+        done()
+      }
+    })
+
+    billow.flows = [{ droplets: [writeable] }]
+    billow.write(`${testString}${testString}`)
+  })
 })
